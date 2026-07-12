@@ -1,0 +1,864 @@
+/* =========================================
+   EcoSphere AI
+   Department Management CSS
+   Part 1
+========================================= */
+
+
+/* =========================================
+   Department Header
+========================================= */
+
+.department-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+
+.department-header h2{
+
+    font-size:28px;
+
+    font-weight:600;
+
+    margin-bottom:6px;
+
+}
+
+
+.department-header p{
+
+    color:#666;
+
+    font-size:14px;
+
+}
+
+
+
+/* =========================================
+   Add Department Button
+========================================= */
+
+
+#addDepartmentBtn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:12px 20px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    font-weight:500;
+
+    background:var(--primary);
+
+    color:white;
+
+    transition:0.3s;
+
+}
+
+
+#addDepartmentBtn:hover{
+
+    transform:translateY(-2px);
+
+    background:var(--secondary);
+
+}
+
+
+
+/* =========================================
+   Toolbar
+========================================= */
+
+
+.department-toolbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.search-box{
+
+    position:relative;
+
+    width:350px;
+
+}
+
+
+
+.search-box input{
+
+    width:100%;
+
+    padding:12px 45px 12px 15px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    outline:none;
+
+    font-size:14px;
+
+    transition:0.3s;
+
+}
+
+
+.search-box input:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 3px rgba(46,125,50,0.12);
+
+}
+
+
+
+.search-box i{
+
+    position:absolute;
+
+    right:15px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#777;
+
+}
+
+
+
+/* =========================================
+   Department Table
+========================================= */
+
+
+.department-table{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,0.06);
+
+    overflow-x:auto;
+
+}
+
+
+
+.department-table table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+
+
+.department-table thead{
+
+    background:#f5f8f5;
+
+}
+
+
+
+.department-table th{
+
+    padding:15px;
+
+    text-align:left;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#444;
+
+}
+
+
+
+.department-table td{
+
+    padding:15px;
+
+    border-bottom:1px solid #eee;
+
+    font-size:14px;
+
+    color:#555;
+
+}
+
+
+
+.department-table tbody tr{
+
+    transition:0.2s;
+
+}
+
+
+.department-table tbody tr:hover{
+
+    background:#fafafa;
+
+}
+
+
+
+.department-table tbody tr:last-child td{
+
+    border-bottom:none;
+
+}
+
+
+
+/* =========================================
+   Status Badge
+========================================= */
+
+
+.active-status,
+.inactive-status{
+
+    display:inline-block;
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:500;
+
+}
+
+
+.active-status{
+
+    background:#e8f5e9;
+
+    color:#2e7d32;
+
+}
+
+
+
+.inactive-status{
+
+    background:#eeeeee;
+
+    color:#616161;
+
+}
+
+
+
+/* =========================================
+   Action Buttons
+========================================= */
+
+
+.edit-btn,
+.delete-btn{
+
+    width:35px;
+
+    height:35px;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    margin-right:8px;
+
+    transition:0.3s;
+
+}
+
+
+
+.edit-btn{
+
+    background:#e3f2fd;
+
+    color:#1565c0;
+
+}
+
+
+
+.delete-btn{
+
+    background:#ffebee;
+
+    color:#c62828;
+
+}
+
+
+
+.edit-btn:hover,
+.delete-btn:hover{
+
+    transform:scale(1.08);
+
+}
+
+
+
+/* =========================================
+   Empty State
+========================================= */
+
+
+.empty-state{
+
+    text-align:center;
+
+    padding:50px;
+
+    background:white;
+
+    border-radius:15px;
+
+}
+
+
+
+.empty-state i{
+
+    font-size:50px;
+
+    color:#aaa;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.empty-state h3{
+
+    margin-bottom:8px;
+
+}
+
+
+
+.empty-state p{
+
+    color:#777;
+
+}
+
+/* =========================================
+   Modal Common Styling
+========================================= */
+
+
+.modal{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(0,0,0,0.45);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:1000;
+
+}
+
+
+
+/* =========================================
+   Add/Edit Department Modal
+========================================= */
+
+
+.modal-content{
+
+    width:500px;
+
+    max-width:90%;
+
+    background:white;
+
+    border-radius:16px;
+
+    padding:25px;
+
+    box-shadow:0 10px 35px rgba(0,0,0,0.15);
+
+    animation:modalOpen 0.3s ease;
+
+}
+
+
+
+@keyframes modalOpen{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+.modal-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.modal-header h2{
+
+    font-size:22px;
+
+    font-weight:600;
+
+}
+
+
+
+.close-modal{
+
+    width:35px;
+
+    height:35px;
+
+    border:none;
+
+    background:#f5f5f5;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    transition:0.3s;
+
+}
+
+
+
+.close-modal:hover{
+
+    background:#eeeeee;
+
+}
+
+
+
+/* =========================================
+   Form Styling
+========================================= */
+
+
+.form-group{
+
+    margin-bottom:18px;
+
+}
+
+
+
+.form-group label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-size:14px;
+
+    font-weight:500;
+
+    color:#333;
+
+}
+
+
+
+.form-group input,
+.form-group select{
+
+    width:100%;
+
+    padding:12px 14px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    outline:none;
+
+    font-size:14px;
+
+    transition:0.3s;
+
+}
+
+
+
+.form-group input:focus,
+.form-group select:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 3px rgba(46,125,50,0.12);
+
+}
+
+
+
+/* =========================================
+   Modal Footer Buttons
+========================================= */
+
+
+.modal-footer{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:15px;
+
+    margin-top:25px;
+
+}
+
+
+
+.cancel-btn,
+.save-btn,
+.delete-confirm-btn{
+
+    padding:11px 20px;
+
+    border:none;
+
+    border-radius:9px;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    font-weight:500;
+
+    transition:0.3s;
+
+}
+
+
+
+.cancel-btn{
+
+    background:#eeeeee;
+
+    color:#555;
+
+}
+
+
+
+.cancel-btn:hover{
+
+    background:#ddd;
+
+}
+
+
+
+.save-btn{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+
+
+.save-btn:hover{
+
+    background:var(--secondary);
+
+}
+
+
+
+/* =========================================
+   Delete Confirmation Modal
+========================================= */
+
+
+.delete-box{
+
+    width:400px;
+
+    max-width:90%;
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:16px;
+
+    text-align:center;
+
+    animation:modalOpen 0.3s ease;
+
+}
+
+
+
+.delete-icon{
+
+    width:60px;
+
+    height:60px;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    background:#ffebee;
+
+    color:#c62828;
+
+    font-size:25px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.delete-box h2{
+
+    margin-bottom:10px;
+
+    font-size:22px;
+
+}
+
+
+
+.delete-box p{
+
+    color:#777;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.delete-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+}
+
+
+
+.delete-confirm-btn{
+
+    background:#c62828;
+
+    color:white;
+
+}
+
+
+
+.delete-confirm-btn:hover{
+
+    background:#b71c1c;
+
+}
+
+
+
+/* =========================================
+   Responsive Design
+========================================= */
+
+
+@media(max-width:900px){
+
+
+    .department-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:15px;
+
+    }
+
+
+    .department-toolbar{
+
+        width:100%;
+
+    }
+
+
+    .search-box{
+
+        width:100%;
+
+    }
+
+
+}
+
+
+
+@media(max-width:600px){
+
+
+    .department-header h2{
+
+        font-size:22px;
+
+    }
+
+
+
+    .department-table{
+
+        padding:12px;
+
+    }
+
+
+
+    .department-table th,
+    .department-table td{
+
+        padding:10px;
+
+        font-size:12px;
+
+    }
+
+
+
+    .modal-content{
+
+        padding:20px;
+
+    }
+
+
+
+    .modal-footer,
+    .delete-buttons{
+
+        flex-direction:column;
+
+    }
+
+
+
+    .cancel-btn,
+    .save-btn,
+    .delete-confirm-btn{
+
+        width:100%;
+
+    }
+
+
+
+}
