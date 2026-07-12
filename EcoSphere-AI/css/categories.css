@@ -1,0 +1,750 @@
+/* =========================================
+   EcoSphere AI
+   Category Management CSS
+========================================= */
+
+
+/* =========================================
+   Category Header
+========================================= */
+
+
+.category-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.category-header h2{
+
+    font-size:28px;
+
+    font-weight:600;
+
+    margin-bottom:6px;
+
+}
+
+
+
+.category-header p{
+
+    color:#666;
+
+    font-size:14px;
+
+}
+
+
+
+
+/* =========================================
+   Add Category Button
+========================================= */
+
+
+#addCategoryBtn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:12px 20px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-size:14px;
+
+    font-weight:500;
+
+    transition:0.3s;
+
+}
+
+
+
+#addCategoryBtn:hover{
+
+    background:var(--secondary);
+
+    transform:translateY(-2px);
+
+}
+
+
+
+
+
+/* =========================================
+   Toolbar
+========================================= */
+
+
+.category-toolbar{
+
+    margin-bottom:20px;
+
+}
+
+
+
+.search-box{
+
+    position:relative;
+
+    width:350px;
+
+}
+
+
+
+.search-box input{
+
+    width:100%;
+
+    padding:12px 45px 12px 15px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    outline:none;
+
+    font-size:14px;
+
+}
+
+
+
+.search-box input:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 3px rgba(46,125,50,0.12);
+
+}
+
+
+
+.search-box i{
+
+    position:absolute;
+
+    right:15px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#777;
+
+}
+
+
+
+
+
+/* =========================================
+   Category Table
+========================================= */
+
+
+.category-table{
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,0.06);
+
+    overflow-x:auto;
+
+}
+
+
+
+.category-table table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+
+
+.category-table thead{
+
+    background:#f5f8f5;
+
+}
+
+
+
+.category-table th{
+
+    padding:15px;
+
+    text-align:left;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+
+
+.category-table td{
+
+    padding:15px;
+
+    border-bottom:1px solid #eee;
+
+    font-size:14px;
+
+    color:#555;
+
+}
+
+
+
+.category-table tbody tr:hover{
+
+    background:#fafafa;
+
+}
+
+
+
+
+
+/* =========================================
+   Status Badge
+========================================= */
+
+
+.active-status,
+.inactive-status{
+
+
+    display:inline-block;
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:500;
+
+
+}
+
+
+
+.active-status{
+
+    background:#e8f5e9;
+
+    color:#2e7d32;
+
+}
+
+
+
+.inactive-status{
+
+    background:#eeeeee;
+
+    color:#616161;
+
+}
+
+
+
+
+
+/* =========================================
+   Action Buttons
+========================================= */
+
+
+.edit-btn,
+.delete-btn{
+
+
+    width:35px;
+
+    height:35px;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    margin-right:8px;
+
+    transition:0.3s;
+
+
+}
+
+
+
+.edit-btn{
+
+    background:#e3f2fd;
+
+    color:#1565c0;
+
+}
+
+
+
+.delete-btn{
+
+    background:#ffebee;
+
+    color:#c62828;
+
+}
+
+
+
+.edit-btn:hover,
+.delete-btn:hover{
+
+    transform:scale(1.08);
+
+}
+
+
+
+
+
+
+/* =========================================
+   Empty State
+========================================= */
+
+
+.empty-state{
+
+    text-align:center;
+
+    padding:50px;
+
+    background:white;
+
+    border-radius:15px;
+
+}
+
+
+
+.empty-state i{
+
+    font-size:50px;
+
+    color:#aaa;
+
+    margin-bottom:15px;
+
+}
+
+
+
+
+
+
+/* =========================================
+   Modal
+========================================= */
+
+
+.modal{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+
+    background:rgba(0,0,0,0.45);
+
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:1000;
+
+
+}
+
+
+
+
+.modal-content{
+
+    width:500px;
+
+    max-width:90%;
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:16px;
+
+    animation:modalShow .3s ease;
+
+
+}
+
+
+
+
+
+@keyframes modalShow{
+
+
+from{
+
+opacity:0;
+
+transform:translateY(-30px);
+
+}
+
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+
+}
+
+
+
+
+.modal-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+
+
+
+.close-modal{
+
+    width:35px;
+
+    height:35px;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    background:#eee;
+
+}
+
+
+
+
+
+
+
+/* =========================================
+   Form Styling
+========================================= */
+
+
+.form-group{
+
+    margin-bottom:18px;
+
+}
+
+
+
+.form-group label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-size:14px;
+
+    font-weight:500;
+
+}
+
+
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+
+
+    width:100%;
+
+    padding:12px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    outline:none;
+
+    font-family:inherit;
+
+
+}
+
+
+
+.form-group textarea{
+
+    height:90px;
+
+    resize:none;
+
+}
+
+
+
+
+
+
+/* =========================================
+   Modal Buttons
+========================================= */
+
+
+.modal-footer{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:15px;
+
+    margin-top:20px;
+
+}
+
+
+
+.cancel-btn,
+.save-btn,
+.delete-confirm-btn{
+
+
+    padding:11px 20px;
+
+    border:none;
+
+    border-radius:9px;
+
+    cursor:pointer;
+
+}
+
+
+
+.cancel-btn{
+
+    background:#eee;
+
+}
+
+
+
+.save-btn{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+
+
+.delete-confirm-btn{
+
+    background:#c62828;
+
+    color:white;
+
+}
+
+
+
+
+
+
+
+/* =========================================
+   Delete Modal
+========================================= */
+
+
+.delete-box{
+
+    width:400px;
+
+    max-width:90%;
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:15px;
+
+    text-align:center;
+
+}
+
+
+
+.delete-icon{
+
+    width:60px;
+
+    height:60px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#ffebee;
+
+    color:#c62828;
+
+    font-size:25px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+
+
+
+
+/* =========================================
+   Responsive
+========================================= */
+
+
+@media(max-width:900px){
+
+
+.category-header{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:15px;
+
+}
+
+
+
+.search-box{
+
+    width:100%;
+
+}
+
+
+
+}
+
+
+
+
+
+@media(max-width:600px){
+
+
+.category-table th,
+.category-table td{
+
+    padding:10px;
+
+    font-size:12px;
+
+}
+
+
+
+.modal-footer{
+
+    flex-direction:column;
+
+}
+
+
+
+.cancel-btn,
+.save-btn{
+
+    width:100%;
+
+}
+
+
+}

@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>CSR Approval | EcoSphere AI</title>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+
+<!-- Common CSS -->
+
+<link rel="stylesheet" href="../css/style.css">
+
+
+<!-- CSR CSS -->
+
+<link rel="stylesheet" href="../css/csr-approval.css">
+
+
+</head>
+
+
+
+<body>
+
+
+<div class="container">
+
+
+
+<!-- ================= SIDEBAR ================= -->
+
+
+<aside class="sidebar">
+
+
+<div class="logo">
+
+<i class="fa-solid fa-leaf"></i>
+
+<h2>EcoSphere AI</h2>
+
+</div>
+
+
+
+
+
+<ul class="menu">
+
+
+<li>
+
+<a href="dashboard.html">
+
+<i class="fa-solid fa-house"></i>
+
+Dashboard
+
+</a>
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="departments.html">
+
+<i class="fa-solid fa-building"></i>
+
+Departments
+
+</a>
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="challenges.html">
+
+<i class="fa-solid fa-bullseye"></i>
+
+Challenges
+
+</a>
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="categories.html">
+
+<i class="fa-solid fa-layer-group"></i>
+
+Categories
+
+</a>
+
+</li>
+
+
+
+
+
+<li class="active">
+
+<a href="csr-approval.html">
+
+<i class="fa-solid fa-circle-check"></i>
+
+CSR Approval
+
+</a>
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="leaderboard.html">
+
+<i class="fa-solid fa-trophy"></i>
+
+Leaderboard
+
+</a>
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="esg-dashboard.html">
+
+<i class="fa-solid fa-seedling"></i>
+
+ESG Dashboard
+
+</a>
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="analytics.html">
+
+<i class="fa-solid fa-chart-line"></i>
+
+Analytics
+
+</a>
+
+</li>
+
+
+
+</ul>
+
+
+</aside>
+
+
+
+
+
+
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
+
+<main class="main-content">
+
+
+
+
+
+<!-- NAVBAR -->
+
+
+<header class="navbar">
+
+
+<div class="welcome">
+
+
+<h2>
+CSR Approval Panel
+</h2>
+
+
+<p>
+Review and approve employee CSR activities.
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="admin-profile">
+
+
+<i class="fa-solid fa-bell"></i>
+
+
+<img src="../assets/images/avatar.png" alt="Admin">
+
+
+</div>
+
+
+</header>
+
+
+
+
+
+
+
+
+
+<!-- PAGE HEADER -->
+
+
+<section class="csr-header">
+
+
+<div>
+
+
+<h2>
+CSR Submissions
+</h2>
+
+
+<p>
+Approve employee sustainability contributions and award XP.
+</p>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- TOOLBAR -->
+
+
+<section class="csr-toolbar">
+
+
+
+<div class="search-box">
+
+
+<input
+
+type="text"
+
+id="searchCSR"
+
+placeholder="Search employee or activity">
+
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="filter-box">
+
+
+<select id="csrFilter">
+
+
+<option value="All">
+
+All Status
+
+</option>
+
+
+<option value="Pending">
+
+Pending
+
+</option>
+
+
+<option value="Approved">
+
+Approved
+
+</option>
+
+
+<option value="Rejected">
+
+Rejected
+
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- CSR TABLE -->
+
+
+<section class="csr-table">
+
+
+
+<table>
+
+
+
+<thead>
+
+
+<tr>
+
+
+<th>ID</th>
+
+
+<th>Employee</th>
+
+
+<th>Department</th>
+
+
+<th>Activity</th>
+
+
+<th>Category</th>
+
+
+<th>Proof</th>
+
+
+<th>XP</th>
+
+
+<th>Status</th>
+
+
+<th>Action</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+
+<tbody id="csrBody">
+
+
+<!-- Dynamic Data -->
+
+</tbody>
+
+
+
+
+
+</table>
+
+
+
+</section>
+
+
+
+
+
+
+
+<!-- EMPTY STATE -->
+
+
+<section 
+id="emptyState"
+class="empty-state"
+style="display:none;">
+
+
+<i class="fa-solid fa-file-circle-check"></i>
+
+
+<h3>
+No CSR Submission Found
+</h3>
+
+
+<p>
+No activity available for approval.
+</p>
+
+
+</section>
+
+
+
+
+
+</main>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ================= VIEW PROOF MODAL ================= -->
+
+
+<div class="modal" id="proofModal">
+
+
+<div class="modal-content proof-box">
+
+
+
+<div class="modal-header">
+
+
+<h2>
+CSR Proof
+</h2>
+
+
+
+<button
+
+class="close-modal"
+
+id="closeProofModal">
+
+
+<i class="fa-solid fa-xmark"></i>
+
+
+</button>
+
+
+</div>
+
+
+
+
+
+<div id="proofContent">
+
+
+<!-- Proof Details -->
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<script src="../js/csr-approval.js"></script>
+
+
+
+</body>
+
+</html>
