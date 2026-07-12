@@ -18,6 +18,7 @@ import challengeParticipationRoutes from "./routes/challengeParticipationRoutes.
 import rewardRedemptionRoutes from "./routes/rewardRedemptionRoutes.js";
 import leaderboardRoutes from "./routes/leaderboardRoutes.js";
 import esgRoutes from "./routes/esgRoutes.js";
+import aiRoutes from "./routes/aiRoutes.js";
 
 import path from "path";
 import { fileURLToPath } from "url";
@@ -60,6 +61,7 @@ app.use("/api/challenges", challengeRoutes);
 app.use("/api/challenge-participation", challengeParticipationRoutes);
 app.use("/api/leaderboard", leaderboardRoutes);
 app.use("/api/esg", esgRoutes);
+app.use("/api/ai", aiRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ success: false, message: "Route not found" });

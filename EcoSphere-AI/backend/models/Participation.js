@@ -34,6 +34,10 @@ const participationSchema = new mongoose.Schema(
       ref: "User",
       default: null,
     },
+    aiAnalysis: {
+      type: mongoose.Schema.Types.Mixed,
+      default: null,
+    },
   },
   {
     timestamps: true,
