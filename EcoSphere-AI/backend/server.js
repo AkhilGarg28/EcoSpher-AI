@@ -26,6 +26,12 @@ import complianceRoutes from "./routes/complianceRoutes.js";
 import policyRoutes from "./routes/policyRoutes.js";
 import reportRoutes from "./routes/reportRoutes.js";
 import analyticsRoutes from "./routes/analyticsRoutes.js";
+import dashboardOptimizationRoutes from "./routes/dashboardOptimizationRoutes.js";
+import searchRoutes from "./routes/searchRoutes.js";
+import rateLimiter from "./middleware/rateLimiter.js";
+import sanitizeMiddleware from "./middleware/sanitizeMiddleware.js";
+import notFound from "./middleware/notFound.js";
+import errorHandler from "./middleware/errorHandler.js";
 
 import path from "path";
 import { fileURLToPath } from "url";
@@ -47,6 +53,9 @@ app.use(
     credentials: true,
   })
 );
+
+app.use(rateLimiter(100, 15 * 60 * 1000));
+app.use(sanitizeMiddleware);
 
 app.get("/", (req, res) => {
   res.json({
@@ -76,19 +85,11 @@ app.use("/api/compliance", complianceRoutes);
 app.use("/api/policies", policyRoutes);
 app.use("/api/reports", reportRoutes);
 app.use("/api/analytics", analyticsRoutes);
+app.use("/api/dashboard-opt", dashboardOptimizationRoutes);
+app.use("/api/search", searchRoutes);
 
-app.use((req, res) => {
-  res.status(404).json({ success: false, message: "Route not found" });
-});
-
-
-app.use((err, req, res, next) => {
-  console.error(" Error:", err.message);
-  res.status(err.status || 500).json({
-    success: false,
-    message: err.message || "Internal Server Error",
-  });
-});
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
