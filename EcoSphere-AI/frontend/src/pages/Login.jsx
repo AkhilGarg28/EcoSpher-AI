@@ -6,27 +6,32 @@ import Button from '../components/Button';
 import Card from '../components/Card';
 
 const Login = () => {
-  const { login, register, isAuthenticated, isLoading } = useAuth();
+  const { login, register, isAuthenticated, isLoading, user } = useAuth();
   const { success, error } = useNotification();
   const navigate = useNavigate();
   const location = useLocation();
 
   const [isLoginTab, setIsLoginTab] = useState(true);
+  const [isAdminMode, setIsAdminMode] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
     department: '',
+    role: 'Employee',
   });
 
   const from = location.state?.from?.pathname || '/';
 
-  // Redirect if already logged in
   useEffect(() => {
-    if (isAuthenticated) {
-      navigate(from, { replace: true });
+    if (isAuthenticated && user) {
+      if (user.role === 'Admin' || user.role === 'Department Head') {
+        window.location.href = "/admin/dashboard.html";
+      } else {
+        navigate(from, { replace: true });
+      }
     }
-  }, [isAuthenticated, navigate, from]);
+  }, [isAuthenticated, user, navigate, from]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -39,7 +44,6 @@ const Login = () => {
       error('Please fill in email and password');
       return;
     }
-
     try {
       if (isLoginTab) {
         await login(formData.email, formData.password);
@@ -49,7 +53,7 @@ const Login = () => {
           error('Please fill in your name and department');
           return;
         }
-        await register(formData.name, formData.email, formData.password, formData.department);
+        await register(formData.name, formData.email, formData.password, formData.department, formData.role);
         success('Account registered successfully!');
       }
     } catch (err) {
@@ -87,7 +91,12 @@ const Login = () => {
 
         {/* Auth form card */}
         <Card className="shadow-xl border border-slate-200 dark:border-slate-800">
-          
+                   {isAdminMode && (
+            <div className="mb-4 text-center bg-brand-500/10 border border-brand-500/20 text-brand-700 dark:text-brand-400 py-1.5 px-3 rounded-xl text-xs font-semibold">
+              🛡️ Admin Access Portal Active
+            </div>
+          )}
+
           {/* Tab Switchers */}
           <div className="flex border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
             <button
@@ -144,7 +153,7 @@ const Login = () => {
                 onChange={handleChange}
                 placeholder="employee@corp.com"
                 required
-                className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-4 py-2.5 text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:border-brand-500 focus:outline-hidden focus:ring-1 focus:ring-brand-500"
+                className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-4 py-2.5 text-sm text-slate-850 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:border-brand-500 focus:outline-hidden focus:ring-1 focus:ring-brand-500"
               />
             </div>
 
@@ -160,7 +169,7 @@ const Login = () => {
                 onChange={handleChange}
                 placeholder="••••••••"
                 required
-                className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-4 py-2.5 text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:border-brand-500 focus:outline-hidden focus:ring-1 focus:ring-brand-500"
+                className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-4 py-2.5 text-sm text-slate-850 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:border-brand-500 focus:outline-hidden focus:ring-1 focus:ring-brand-500"
               />
             </div>
 
@@ -175,7 +184,7 @@ const Login = () => {
                   value={formData.department}
                   onChange={handleChange}
                   required={!isLoginTab}
-                  className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-4 py-2.5 text-sm text-slate-800 dark:text-slate-100 focus:border-brand-500 focus:outline-hidden focus:ring-1 focus:ring-brand-500 dark:bg-slate-900 cursor-pointer"
+                  className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-4 py-2.5 text-sm text-slate-850 dark:text-slate-100 focus:border-brand-500 focus:outline-hidden focus:ring-1 focus:ring-brand-500 dark:bg-slate-900 cursor-pointer"
                 >
                   <option value="" disabled className="text-slate-500">Select department</option>
                   {departments.map((dept) => (
@@ -195,6 +204,20 @@ const Login = () => {
             >
               {isLoginTab ? 'Sign In' : 'Sign Up'}
             </Button>
+            <button
+              type="button"
+              onClick={() => {
+                const targetAdmin = !isAdminMode;
+                setIsAdminMode(targetAdmin);
+                setFormData(prev => ({
+                  ...prev,
+                  role: targetAdmin ? 'Admin' : 'Employee'
+                }));
+              }}
+              className="w-full text-center text-xs font-semibold text-brand-600 hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300 mt-3 cursor-pointer"
+            >
+              {isAdminMode ? 'Switch to Employee Portal' : 'Switch to Admin Portal'}
+            </button>
           </form>
 
           {/* Additional text footer */}

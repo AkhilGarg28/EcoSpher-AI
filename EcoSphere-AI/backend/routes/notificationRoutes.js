@@ -21,7 +21,19 @@ router.put(
   markAllAsRead
 );
 
+router.post(
+  "/read-all",
+  protect,
+  markAllAsRead
+);
+
 router.put(
+  "/:id/read",
+  protect,
+  markAsRead
+);
+
+router.patch(
   "/:id/read",
   protect,
   markAsRead

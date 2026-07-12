@@ -4,7 +4,7 @@ import { deductXP } from "../services/xpService.js";
 
 const redeemReward = async (req, res) => {
   try {
-    const { rewardId } = req.body;
+    const rewardId = req.body.rewardId || req.params.rewardId;
     const userId = req.user.id;
 
     const reward = await Reward.findById(rewardId);
@@ -78,4 +78,25 @@ const redeemReward = async (req, res) => {
   }
 };
 
-export { redeemReward };
+const getRedemptionHistory = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select("rewards");
+    const history = user.rewards.map((title) => ({
+      rewardTitle: title,
+      redeemedAt: new Date(),
+    }));
+
+    return res.status(200).json({
+      success: true,
+      history,
+    });
+  } catch (error) {
+    console.error("getRedemptionHistory() error:", error.message);
+    return res.status(500).json({
+      success: false,
+      message: "Server error while fetching redemption history",
+    });
+  }
+};
+
+export { redeemReward, getRedemptionHistory };

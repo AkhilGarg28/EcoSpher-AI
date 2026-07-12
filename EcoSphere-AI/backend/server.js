@@ -57,6 +57,13 @@ app.use(
 app.use(rateLimiter(100, 15 * 60 * 1000));
 app.use(sanitizeMiddleware);
 
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+app.use("/admin", express.static(path.join(__dirname, "../admin")));
+app.use("/css", express.static(path.join(__dirname, "../css")));
+app.use("/js", express.static(path.join(__dirname, "../js")));
+app.use("/assets", express.static(path.join(__dirname, "../assets")));
+
 app.get("/", (req, res) => {
   res.json({
     success: true,
@@ -87,6 +94,10 @@ app.use("/api/reports", reportRoutes);
 app.use("/api/analytics", analyticsRoutes);
 app.use("/api/dashboard-opt", dashboardOptimizationRoutes);
 app.use("/api/search", searchRoutes);
+
+app.get(/^\/(?!api).*/, (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+});
 
 app.use(notFound);
 app.use(errorHandler);

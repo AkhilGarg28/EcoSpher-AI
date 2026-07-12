@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { redeemReward } from "../controllers/rewardRedemptionController.js";
+import { redeemReward, getRedemptionHistory } from "../controllers/rewardRedemptionController.js";
 import { protect } from "../middleware/authMiddleware.js";
 import { redeemRewardValidator } from "../validators/rewardValidator.js";
 import handleValidation from "../utils/validationHandler.js";
@@ -12,6 +12,18 @@ router.post(
   redeemRewardValidator,
   handleValidation,
   redeemReward
+);
+
+router.post(
+  "/:rewardId/redeem",
+  protect,
+  redeemReward
+);
+
+router.get(
+  "/history",
+  protect,
+  getRedemptionHistory
 );
 
 export default router;

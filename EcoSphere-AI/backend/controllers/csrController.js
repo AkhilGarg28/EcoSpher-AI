@@ -1,4 +1,6 @@
 import CSRActivity from "../models/CSRActivity.js";
+import Category from "../models/Category.js";
+import Participation from "../models/Participation.js";
 
 const createCSR = async (req, res) => {
   try {
@@ -198,4 +200,92 @@ const deleteCSR = async (req, res) => {
   }
 };
 
-export { createCSR, getCSRActivities, getCSRById, updateCSR, deleteCSR };
+const submitActivityReport = async (req, res) => {
+  try {
+    const { title, description, category, activityDate } = req.body;
+    const employeeId = req.user.id;
+
+    if (!title || !description || !category || !activityDate) {
+      return res.status(400).json({
+        success: false,
+        message: "All fields are required",
+      });
+    }
+
+    let cat = await Category.findOne({ name: new RegExp(category, "i") });
+    if (!cat) {
+      cat = await Category.create({
+        name: category.charAt(0).toUpperCase() + category.slice(1),
+        type: "CSR",
+      });
+    }
+
+    const activity = await CSRActivity.create({
+      title: title.trim(),
+      description,
+      category: cat._id,
+      organizer: employeeId,
+      startDate: new Date(activityDate),
+      endDate: new Date(activityDate),
+      status: "Open",
+      createdBy: employeeId,
+    });
+
+    const participation = await Participation.create({
+      employee: employeeId,
+      activity: activity._id,
+      approvalStatus: "Pending",
+      completionDate: new Date(activityDate),
+      proof: "Documented proof uploaded",
+    });
+
+    return res.status(201).json({
+      success: true,
+      message: "ESG activity report submitted successfully",
+      activity,
+      participation,
+    });
+  } catch (error) {
+    console.error("submitActivityReport() error:", error.message);
+    return res.status(500).json({
+      success: false,
+      message: "Server error during activity report submission",
+    });
+  }
+};
+
+const getMySubmissions = async (req, res) => {
+  try {
+    const participations = await Participation.find({ employee: req.user.id })
+      .populate({
+        path: "activity",
+        populate: {
+          path: "category",
+          select: "name type",
+        },
+      })
+      .populate("reviewedBy", "name email");
+
+    return res.status(200).json({
+      success: true,
+      submissions: participations,
+      participations,
+    });
+  } catch (error) {
+    console.error("getMySubmissions() error:", error.message);
+    return res.status(500).json({
+      success: false,
+      message: "Server error while fetching your submissions",
+    });
+  }
+};
+
+export {
+  createCSR,
+  getCSRActivities,
+  getCSRById,
+  updateCSR,
+  deleteCSR,
+  submitActivityReport,
+  getMySubmissions,
+};

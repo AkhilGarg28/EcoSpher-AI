@@ -110,15 +110,14 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const handleRegister = async (name, email, password, department) => {
+  const handleRegister = async (name, email, password, department, role = 'Employee') => {
     setIsLoading(true);
     try {
       let data;
       try {
-        data = await authService.register(name, email, password, department);
+        data = await authService.register(name, email, password, department, role);
       } catch (error) {
         if (import.meta.env.DEV) {
-          // Dev fallback: Simulate registration success when backend is unavailable
           console.warn('Development Mode: Backend registration failed. Using mock credentials.');
           data = {
             success: true,
@@ -127,7 +126,7 @@ export const AuthProvider = ({ children }) => {
               _id: 'mock-dev-user-id',
               name,
               email,
-              role: 'Employee',
+              role,
               department: department || 'Operations & Supply Chain',
             }
           };
@@ -135,7 +134,6 @@ export const AuthProvider = ({ children }) => {
           throw error;
         }
       }
-
       if (data.success && data.token) {
         setToken(data.token);
         setUser(data.user);

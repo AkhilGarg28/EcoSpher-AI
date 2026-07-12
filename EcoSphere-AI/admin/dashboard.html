@@ -91,8 +91,13 @@
                 </a>
             </li>
 
+            <li>
+                <a href="#" id="adminLogoutBtn" style="color: #ef4444;">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+            </li>
         </ul>
-
     </aside>
 
     <!-- ================= Main ================= -->
@@ -176,11 +181,7 @@
 
                 <h3>Monthly Participation</h3>
 
-                <div class="chart-placeholder">
-
-                    Chart Area
-
-                </div>
+                <canvas id="dashboardChart" style="max-height: 250px; width: 100%;"></canvas>
 
             </div>
 
@@ -284,7 +285,7 @@
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="../js/dashboard.js"></script>
-
 </body>
 </html>

@@ -5,6 +5,8 @@ import {
   getCSRById,
   updateCSR,
   deleteCSR,
+  submitActivityReport,
+  getMySubmissions,
 } from "../controllers/csrController.js";
 import { protect, authorize } from "../middleware/authMiddleware.js";
 import {
@@ -28,6 +30,18 @@ router.get(
   "/",
   protect,
   getCSRActivities
+);
+
+router.post(
+  "/submit",
+  protect,
+  submitActivityReport
+);
+
+router.get(
+  "/my-submissions",
+  protect,
+  getMySubmissions
 );
 
 router.get(

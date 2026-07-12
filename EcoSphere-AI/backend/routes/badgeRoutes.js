@@ -5,6 +5,7 @@ import {
   getBadgeById,
   updateBadge,
   deleteBadge,
+  getEarnedBadges,
 } from "../controllers/badgeController.js";
 import { protect, authorize } from "../middleware/authMiddleware.js";
 import {
@@ -28,6 +29,12 @@ router.get(
   "/",
   protect,
   getBadges
+);
+
+router.get(
+  "/earned",
+  protect,
+  getEarnedBadges
 );
 
 router.get(

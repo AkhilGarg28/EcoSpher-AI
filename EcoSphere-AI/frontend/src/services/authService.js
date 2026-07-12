@@ -13,13 +13,13 @@ const authService = {
   /**
    * Register a new employee account
    */
-  register: async (name, email, password, department) => {
+  register: async (name, email, password, department, role = 'Employee') => {
     const response = await axios.post(`${API_BASE_URL}/auth/register`, {
       name,
       email,
       password,
       department,
-      role: 'Employee' // Standard default role for employee frontend
+      role
     });
     return response.data;
   },

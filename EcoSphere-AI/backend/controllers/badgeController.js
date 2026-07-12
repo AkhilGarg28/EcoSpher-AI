@@ -160,4 +160,20 @@ const deleteBadge = async (req, res) => {
   }
 };
 
-export { createBadge, getBadges, getBadgeById, updateBadge, deleteBadge };
+const getEarnedBadges = async (req, res) => {
+  try {
+    const badges = await Badge.find({ name: { $in: req.user.badges } });
+    return res.status(200).json({
+      success: true,
+      badges,
+    });
+  } catch (error) {
+    console.error("getEarnedBadges() error:", error.message);
+    return res.status(500).json({
+      success: false,
+      message: "Server error while fetching earned badges",
+    });
+  }
+};
+
+export { createBadge, getBadges, getBadgeById, updateBadge, deleteBadge, getEarnedBadges };
