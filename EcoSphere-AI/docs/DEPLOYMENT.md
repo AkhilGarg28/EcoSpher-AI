@@ -71,7 +71,7 @@ Backend requires the following environment variables:
 
 ---
 
-## Deployment Status
+## Deployment status
 
 Deployment documentation prepared.
 
