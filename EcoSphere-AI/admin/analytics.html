@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Analytics | EcoSphere AI</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Analytics CSS -->
+    <link rel="stylesheet" href="../css/analytics.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <i class="fa-solid fa-leaf"></i>
+            <h2>EcoSphere AI</h2>
+        </div>
+
+        <ul class="menu">
+
+            <li>
+                <a href="dashboard.html">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="departments.html">
+                    <i class="fa-solid fa-building"></i>
+                    Departments
+                </a>
+            </li>
+
+            <li>
+                <a href="challenges.html">
+                    <i class="fa-solid fa-bullseye"></i>
+                    Challenges
+                </a>
+            </li>
+
+            <li>
+                <a href="categories.html">
+                    <i class="fa-solid fa-layer-group"></i>
+                    Categories
+                </a>
+            </li>
+
+            <li>
+                <a href="csr-approval.html">
+                    <i class="fa-solid fa-circle-check"></i>
+                    CSR Approval
+                </a>
+            </li>
+
+            <li>
+                <a href="leaderboard.html">
+                    <i class="fa-solid fa-trophy"></i>
+                    Leaderboard
+                </a>
+            </li>
+
+            <li>
+                <a href="esg-dashboard.html">
+                    <i class="fa-solid fa-seedling"></i>
+                    ESG Dashboard
+                </a>
+            </li>
+
+            <li class="active">
+                <a href="analytics.html">
+                    <i class="fa-solid fa-chart-line"></i>
+                    Analytics
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+        <!-- NAVBAR -->
+
+        <header class="navbar">
+
+            <div class="welcome">
+
+                <h2>Analytics Dashboard</h2>
+
+                <p>Track ESG performance and employee participation.</p>
+
+            </div>
+
+            <div class="admin-profile">
+
+                <i class="fa-solid fa-bell"></i>
+
+                <img src="../assets/images/avatar.png" alt="Admin">
+
+            </div>
+
+        </header>
+
+        <!-- ================= PAGE HEADER ================= -->
+
+        <section class="analytics-header">
+
+            <div>
+
+                <h2>Business Analytics</h2>
+
+                <p>Insights into sustainability performance across the organization.</p>
+
+            </div>
+
+            <div class="analytics-filter">
+
+                <select id="timeFilter">
+
+                    <option value="monthly">Monthly</option>
+
+                    <option value="quarterly">Quarterly</option>
+
+                    <option value="yearly">Yearly</option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+        <!-- ================= SUMMARY CARDS ================= -->
+
+        <section class="analytics-cards">
+
+            <div class="analytics-card">
+
+                <i class="fa-solid fa-users"></i>
+
+                <h3 id="employeeCount">0</h3>
+
+                <p>Total Employees</p>
+
+            </div>
+
+            <div class="analytics-card">
+
+                <i class="fa-solid fa-bullseye"></i>
+
+                <h3 id="challengeCount">0</h3>
+
+                <p>Challenges Completed</p>
+
+            </div>
+
+            <div class="analytics-card">
+
+                <i class="fa-solid fa-handshake-angle"></i>
+
+                <h3 id="csrCount">0</h3>
+
+                <p>CSR Activities</p>
+
+            </div>
+
+            <div class="analytics-card">
+
+                <i class="fa-solid fa-earth-americas"></i>
+
+                <h3 id="overallESG">0%</h3>
+
+                <p>Overall ESG Score</p>
+
+            </div>
+
+        </section>
+
+        <!-- ================= CHART SECTION ================= -->
+
+        <section class="chart-grid">
+
+            <div class="chart-card">
+
+                <h3>Department ESG Score</h3>
+
+                <canvas id="departmentChart"></canvas>
+
+            </div>
+
+            <div class="chart-card">
+
+                <h3>Monthly CSR Activities</h3>
+
+                <canvas id="csrChart"></canvas>
+
+            </div>
+
+        </section>
+
+        <section class="chart-grid">
+
+            <div class="chart-card">
+
+                <h3>Challenge Participation</h3>
+
+                <canvas id="challengeChart"></canvas>
+
+            </div>
+
+            <div class="chart-card">
+
+                <h3>ESG Category Distribution</h3>
+
+                <canvas id="categoryChart"></canvas>
+
+            </div>
+
+        </section>
+
+        <!-- ================= RECENT ACTIVITY ================= -->
+
+        <section class="activity-section">
+
+            <div class="section-title">
+
+                <h2>Recent Activities</h2>
+
+            </div>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Date</th>
+
+                        <th>Employee</th>
+
+                        <th>Department</th>
+
+                        <th>Activity</th>
+
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="activityTable">
+
+                    <!-- Dynamic Data -->
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Analytics JS -->
+<script src="../js/analytics.js"></script>
+
+</body>
+
+</html>

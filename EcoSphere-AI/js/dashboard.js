@@ -98,17 +98,17 @@ function setupQuickActions() {
 // Notification Icon
 // ======================================
 
-const notification = document.querySelector(".fa-bell");
+// const notification = document.querySelector(".fa-bell");
 
-if (notification) {
+// if (notification) {
 
-    notification.addEventListener("click", () => {
+//     notification.addEventListener("click", () => {
 
-        alert("No new notifications.");
+//         alert("No new notifications.");
 
-    });
+//     });
 
-}
+// }
 
 // ======================================
 // Welcome Message
