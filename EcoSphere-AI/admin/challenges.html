@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Challenge Management | EcoSphere AI</title>
+
+
+    <!-- Google Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+
+    <!-- Font Awesome -->
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+    <!-- Common CSS -->
+
+    <link rel="stylesheet" href="../css/style.css">
+
+
+    <!-- Page CSS -->
+
+    <link rel="stylesheet" href="../css/challenges.css">
+
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<!-- ================= SIDEBAR ================= -->
+
+
+<aside class="sidebar">
+
+
+<div class="logo">
+
+<i class="fa-solid fa-leaf"></i>
+
+<h2>EcoSphere AI</h2>
+
+</div>
+
+
+
+<ul class="menu">
+
+
+<li>
+
+<a href="dashboard.html">
+
+<i class="fa-solid fa-house"></i>
+
+Dashboard
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="departments.html">
+
+<i class="fa-solid fa-building"></i>
+
+Departments
+
+</a>
+
+</li>
+
+
+
+<li class="active">
+
+<a href="challenges.html">
+
+<i class="fa-solid fa-bullseye"></i>
+
+Challenges
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="categories.html">
+
+<i class="fa-solid fa-layer-group"></i>
+
+Categories
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="csr-approval.html">
+
+<i class="fa-solid fa-circle-check"></i>
+
+CSR Approval
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="leaderboard.html">
+
+<i class="fa-solid fa-trophy"></i>
+
+Leaderboard
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="esg-dashboard.html">
+
+<i class="fa-solid fa-seedling"></i>
+
+ESG Dashboard
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="analytics.html">
+
+<i class="fa-solid fa-chart-line"></i>
+
+Analytics
+
+</a>
+
+</li>
+
+
+</ul>
+
+
+</aside>
+
+
+
+
+
+<!-- ================= MAIN ================= -->
+
+
+<main class="main-content">
+
+
+
+<!-- ================= NAVBAR ================= -->
+
+
+<header class="navbar">
+
+
+<div class="welcome">
+
+
+<h2>
+Challenge Management
+</h2>
+
+
+<p>
+Create and manage sustainability challenges.
+</p>
+
+
+</div>
+
+
+
+<div class="admin-profile">
+
+
+<i class="fa-solid fa-bell"></i>
+
+
+<img src="../assets/images/avatar.png" alt="Admin">
+
+
+</div>
+
+
+
+</header>
+
+
+
+
+
+
+<!-- ================= PAGE HEADER ================= -->
+
+
+<section class="challenge-header">
+
+
+<div>
+
+
+<h2>
+Challenges
+</h2>
+
+
+<p>
+Manage employee sustainability challenges and rewards.
+</p>
+
+
+</div>
+
+
+
+<button id="addChallengeBtn">
+
+
+<i class="fa-solid fa-plus"></i>
+
+
+Add Challenge
+
+
+</button>
+
+
+</section>
+
+
+
+
+
+
+<!-- ================= TOOLBAR ================= -->
+
+
+<section class="challenge-toolbar">
+
+
+
+<div class="search-box">
+
+
+<input
+
+type="text"
+
+id="searchChallenge"
+
+placeholder="Search Challenge">
+
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+
+</div>
+
+
+
+
+<div class="filter-box">
+
+
+<select id="statusFilter">
+
+
+<option value="All">
+All Status
+</option>
+
+
+<option value="Active">
+Active
+</option>
+
+
+<option value="Upcoming">
+Upcoming
+</option>
+
+
+<option value="Completed">
+Completed
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+<!-- ================= TABLE ================= -->
+
+
+<section class="challenge-table">
+
+
+<table id="challengeTable">
+
+
+<thead>
+
+
+<tr>
+
+
+<th>ID</th>
+
+
+<th>Challenge Name</th>
+
+
+<th>Category</th>
+
+
+<th>Department</th>
+
+
+<th>XP Reward</th>
+
+
+<th>Deadline</th>
+
+
+<th>Participants</th>
+
+
+<th>Status</th>
+
+
+<th>Actions</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+
+<tbody id="challengeBody">
+
+
+<!-- Dynamic Data Render Here -->
+
+
+</tbody>
+
+
+
+</table>
+
+
+</section>
+
+
+
+
+
+<!-- EMPTY STATE -->
+
+
+<section 
+id="emptyState"
+class="empty-state"
+style="display:none;">
+
+
+<i class="fa-solid fa-bullseye"></i>
+
+
+<h3>
+No Challenge Found
+</h3>
+
+
+<p>
+Try another search or create a new challenge.
+</p>
+
+
+</section>
+
+
+
+</main>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ================= ADD / EDIT MODAL ================= -->
+
+
+<div class="modal" id="challengeModal">
+
+
+
+<div class="modal-content">
+
+
+
+<div class="modal-header">
+
+
+<h2 id="modalTitle">
+
+Add Challenge
+
+</h2>
+
+
+
+<button
+class="close-modal"
+id="closeChallengeModal">
+
+
+<i class="fa-solid fa-xmark"></i>
+
+
+</button>
+
+
+</div>
+
+
+
+
+
+<form id="challengeForm">
+
+
+
+<input
+type="hidden"
+id="challengeId">
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Challenge Name
+</label>
+
+
+<input
+
+type="text"
+
+id="challengeName"
+
+placeholder="Enter challenge name"
+
+required>
+
+
+</div>
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Category
+</label>
+
+
+<select id="challengeCategory">
+
+
+<option>
+Environment
+</option>
+
+
+<option>
+Social
+</option>
+
+
+<option>
+Governance
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Department
+</label>
+
+
+<input
+
+type="text"
+
+id="challengeDepartment"
+
+placeholder="Enter department"
+
+required>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+XP Reward
+</label>
+
+
+<input
+
+type="number"
+
+id="challengeXP"
+
+placeholder="Enter XP"
+
+required>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Deadline
+</label>
+
+
+<input
+
+type="date"
+
+id="challengeDeadline"
+
+required>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Status
+</label>
+
+
+<select id="challengeStatus">
+
+
+<option>
+Active
+</option>
+
+
+<option>
+Upcoming
+</option>
+
+
+<option>
+Completed
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="modal-footer">
+
+
+<button
+
+type="button"
+
+class="cancel-btn"
+
+id="cancelChallengeBtn">
+
+
+Cancel
+
+
+</button>
+
+
+
+
+
+<button
+
+type="submit"
+
+class="save-btn"
+
+id="saveChallengeBtn">
+
+
+Save Challenge
+
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+</form>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- ================= DELETE MODAL ================= -->
+
+
+<div class="modal" id="deleteModal">
+
+
+
+<div class="delete-box">
+
+
+
+<div class="delete-icon">
+
+
+<i class="fa-solid fa-trash"></i>
+
+
+</div>
+
+
+
+
+<h2>
+Delete Challenge?
+</h2>
+
+
+
+<p>
+This action cannot be undone.
+</p>
+
+
+
+
+<div class="delete-buttons">
+
+
+<button
+
+id="cancelDeleteBtn"
+
+class="cancel-btn">
+
+
+Cancel
+
+
+</button>
+
+
+
+
+
+<button
+
+id="confirmDeleteBtn"
+
+class="delete-confirm-btn">
+
+
+Delete
+
+
+</button>
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<script src="../js/challenges.js"></script>
+
+
+</body>
+
+
+</html>

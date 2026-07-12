@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Category Management | EcoSphere AI</title>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+    <!-- Common CSS -->
+
+    <link rel="stylesheet" href="../css/style.css">
+
+
+    <!-- Category CSS -->
+
+    <link rel="stylesheet" href="../css/categories.css">
+
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+
+<!-- ================= SIDEBAR ================= -->
+
+
+<aside class="sidebar">
+
+
+<div class="logo">
+
+<i class="fa-solid fa-leaf"></i>
+
+<h2>EcoSphere AI</h2>
+
+</div>
+
+
+
+
+<ul class="menu">
+
+
+<li>
+
+<a href="dashboard.html">
+
+<i class="fa-solid fa-house"></i>
+
+Dashboard
+
+</a>
+
+</li>
+
+
+
+
+<li>
+
+<a href="departments.html">
+
+<i class="fa-solid fa-building"></i>
+
+Departments
+
+</a>
+
+</li>
+
+
+
+
+<li>
+
+<a href="challenges.html">
+
+<i class="fa-solid fa-bullseye"></i>
+
+Challenges
+
+</a>
+
+</li>
+
+
+
+
+<li class="active">
+
+<a href="categories.html">
+
+<i class="fa-solid fa-layer-group"></i>
+
+Categories
+
+</a>
+
+</li>
+
+
+
+
+<li>
+
+<a href="csr-approval.html">
+
+<i class="fa-solid fa-circle-check"></i>
+
+CSR Approval
+
+</a>
+
+</li>
+
+
+
+
+<li>
+
+<a href="leaderboard.html">
+
+<i class="fa-solid fa-trophy"></i>
+
+Leaderboard
+
+</a>
+
+</li>
+
+
+
+
+<li>
+
+<a href="esg-dashboard.html">
+
+<i class="fa-solid fa-seedling"></i>
+
+ESG Dashboard
+
+</a>
+
+</li>
+
+
+
+
+<li>
+
+<a href="analytics.html">
+
+<i class="fa-solid fa-chart-line"></i>
+
+Analytics
+
+</a>
+
+</li>
+
+
+</ul>
+
+
+</aside>
+
+
+
+
+
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
+
+<main class="main-content">
+
+
+
+
+
+<!-- NAVBAR -->
+
+
+<header class="navbar">
+
+
+<div class="welcome">
+
+
+<h2>
+Category Management
+</h2>
+
+
+<p>
+Manage sustainability challenge categories.
+</p>
+
+
+</div>
+
+
+
+
+<div class="admin-profile">
+
+
+<i class="fa-solid fa-bell"></i>
+
+
+<img src="../assets/images/avatar.png" alt="Admin">
+
+
+</div>
+
+
+
+</header>
+
+
+
+
+
+
+
+<!-- PAGE HEADER -->
+
+
+<section class="category-header">
+
+
+<div>
+
+
+<h2>
+Categories
+</h2>
+
+
+<p>
+Create and manage ESG categories.
+</p>
+
+
+</div>
+
+
+
+
+<button id="addCategoryBtn">
+
+
+<i class="fa-solid fa-plus"></i>
+
+
+Add Category
+
+
+</button>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- TOOLBAR -->
+
+
+<section class="category-toolbar">
+
+
+
+<div class="search-box">
+
+
+<input
+
+type="text"
+
+id="searchCategory"
+
+placeholder="Search Category">
+
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- TABLE -->
+
+
+<section class="category-table">
+
+
+<table id="categoryTable">
+
+
+<thead>
+
+
+<tr>
+
+
+<th>ID</th>
+
+
+<th>Category Name</th>
+
+
+<th>ESG Type</th>
+
+
+<th>Description</th>
+
+
+<th>Status</th>
+
+
+<th>Actions</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+<tbody id="categoryBody">
+
+
+</tbody>
+
+
+
+</table>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<section
+
+id="emptyState"
+
+class="empty-state"
+
+style="display:none;">
+
+
+
+<i class="fa-solid fa-layer-group"></i>
+
+
+
+<h3>
+No Category Found
+</h3>
+
+
+
+<p>
+Create a new category to get started.
+</p>
+
+
+
+</section>
+
+
+
+
+</main>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ================= ADD / EDIT MODAL ================= -->
+
+
+<div class="modal" id="categoryModal">
+
+
+
+<div class="modal-content">
+
+
+
+<div class="modal-header">
+
+
+<h2 id="modalTitle">
+
+Add Category
+
+</h2>
+
+
+
+
+<button
+
+class="close-modal"
+
+id="closeCategoryModal">
+
+
+<i class="fa-solid fa-xmark"></i>
+
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+<form id="categoryForm">
+
+
+
+
+
+<input
+
+type="hidden"
+
+id="categoryId">
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Category Name
+</label>
+
+
+<input
+
+type="text"
+
+id="categoryName"
+
+placeholder="Enter category name"
+
+required>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+ESG Type
+</label>
+
+
+
+<select id="categoryType">
+
+
+<option>
+Environmental
+</option>
+
+
+<option>
+Social
+</option>
+
+
+<option>
+Governance
+</option>
+
+
+</select>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Description
+</label>
+
+
+<textarea
+
+id="categoryDescription"
+
+placeholder="Enter description"></textarea>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Status
+</label>
+
+
+<select id="categoryStatus">
+
+
+<option>
+Active
+</option>
+
+
+<option>
+Inactive
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="modal-footer">
+
+
+<button
+
+type="button"
+
+class="cancel-btn"
+
+id="cancelCategoryBtn">
+
+
+Cancel
+
+
+</button>
+
+
+
+
+<button
+
+type="submit"
+
+class="save-btn"
+
+id="saveCategoryBtn">
+
+
+Save Category
+
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+</form>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ================= DELETE MODAL ================= -->
+
+
+
+<div class="modal" id="deleteModal">
+
+
+
+<div class="delete-box">
+
+
+
+<div class="delete-icon">
+
+
+<i class="fa-solid fa-trash"></i>
+
+
+</div>
+
+
+
+<h2>
+Delete Category?
+</h2>
+
+
+
+<p>
+This action cannot be undone.
+</p>
+
+
+
+
+<div class="delete-buttons">
+
+
+
+<button
+
+class="cancel-btn"
+
+id="cancelDeleteBtn">
+
+
+Cancel
+
+
+</button>
+
+
+
+
+
+<button
+
+class="delete-confirm-btn"
+
+id="confirmDeleteBtn">
+
+
+Delete
+
+
+</button>
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<script src="../js/categories.js"></script>
+
+
+</body>
+
+</html>
