@@ -2,23 +2,20 @@
    EcoSphere AI
    Leaderboard JS
 
-   Features:
-   - Employee Ranking
-   - XP Sorting
-   - Search
-   - Department Filter
-   - Stats Cards
-   - Backend Ready
+   Features
+   ✔ Dynamic Ranking
+   ✔ Search Employee
+   ✔ Department Filter
+   ✔ Badge Unlock System
+   ✔ Reward Redemption
+   ✔ Backend Ready
 ========================================= */
 
-
-
-// ================================
-// Dummy Leaderboard Data
+// =========================================
+// Dummy Data
 // Backend:
 // GET /api/leaderboard
-// ================================
-
+// =========================================
 
 let leaderboard = [
 
@@ -27,496 +24,492 @@ let leaderboard = [
         name:"Amit Sharma",
         department:"IT",
         xp:1250,
-        badges:8,
         challenges:15,
         esg:92
     },
-
 
     {
         id:2,
         name:"Priya Singh",
         department:"HR",
         xp:1100,
-        badges:7,
         challenges:13,
         esg:88
     },
-
 
     {
         id:3,
         name:"Rahul Verma",
         department:"Finance",
         xp:950,
-        badges:5,
         challenges:10,
         esg:82
     },
-
 
     {
         id:4,
         name:"Neha Kapoor",
         department:"Marketing",
         xp:870,
-        badges:4,
         challenges:9,
         esg:78
     }
 
-
 ];
 
-
-
-
-
-
-// ================================
+// =========================================
 // DOM Elements
-// ================================
-
+// =========================================
 
 const leaderboardBody =
 document.getElementById("leaderboardBody");
 
-
-
 const searchEmployee =
 document.getElementById("searchEmployee");
-
-
 
 const departmentFilter =
 document.getElementById("departmentFilter");
 
-
-
 const topEmployee =
 document.getElementById("topEmployee");
-
-
 
 const totalXP =
 document.getElementById("totalXP");
 
-
-
 const totalEmployees =
 document.getElementById("totalEmployees");
 
+const rewardModal =
+document.getElementById("rewardModal");
 
+const rewardEmployee =
+document.getElementById("rewardEmployee");
 
+const rewardXP =
+document.getElementById("rewardXP");
 
-
-
-
-
-// ================================
+// =========================================
 // Initial Load
-// ================================
+// =========================================
 
-
-document.addEventListener(
-"DOMContentLoaded",
-()=>{
-
+document.addEventListener("DOMContentLoaded",()=>{
 
     sortLeaderboard();
 
-
     renderLeaderboard(leaderboard);
-
 
     updateCards();
 
-
 });
 
-
-
-
-
-
-
-
-
-// ================================
-// Sort By XP
-// ================================
-
+// =========================================
+// Sort Leaderboard
+// =========================================
 
 function sortLeaderboard(){
 
+    leaderboard.sort((a,b)=>b.xp-a.xp);
 
-leaderboard.sort(
-(a,b)=>b.xp-a.xp
-);
+}
 
+// =========================================
+// Badge Logic
+// =========================================
+
+function getBadge(xp){
+
+    if(xp>=1000){
+
+        return{
+
+            text:"🏆 Eco Legend",
+
+            className:"legend",
+
+            status:"Unlocked"
+
+        };
+
+    }
+
+    if(xp>=800){
+
+        return{
+
+            text:"🥇 Eco Hero",
+
+            className:"hero",
+
+            status:"Unlocked"
+
+        };
+
+    }
+
+    if(xp>=600){
+
+        return{
+
+            text:"🌿 Green Warrior",
+
+            className:"warrior",
+
+            status:"Unlocked"
+
+        };
+
+    }
+
+    if(xp>=400){
+
+        return{
+
+            text:"⭐ CSR Champion",
+
+            className:"champion",
+
+            status:"Unlocked"
+
+        };
+
+    }
+
+    if(xp>=200){
+
+        return{
+
+            text:"🌱 Eco Beginner",
+
+            className:"beginner",
+
+            status:"Unlocked"
+
+        };
+
+    }
+
+    return{
+
+        text:"🔒 Locked",
+
+        className:"locked",
+
+        status:"Locked"
+
+    };
 
 }
 
 
-
-
-
-
-
-
-
-// ================================
+// =========================================
 // Render Leaderboard
-// ================================
-
+// =========================================
 
 function renderLeaderboard(data){
 
-
     leaderboardBody.innerHTML="";
 
-
-
     if(data.length===0){
-
 
         leaderboardBody.innerHTML=`
 
         <tr>
 
-        <td colspan="7" style="text-align:center">
+            <td colspan="9" style="text-align:center">
 
-        No Employee Found
+                No Employee Found
 
-        </td>
+            </td>
 
         </tr>
 
         `;
 
-
         return;
-
 
     }
 
+    data.forEach((employee,index)=>{
 
+        const rank=index+1;
 
-
-
-
-    data.forEach(
-    (employee,index)=>{
-
-
-        let rank=index+1;
-
-
+        const badge=getBadge(employee.xp);
 
         let row=document.createElement("tr");
-
-
 
         row.innerHTML=`
 
         <td class="${
-        
-        rank===1
-        ?
-        "rank-one"
-        :
-        rank===2
-        ?
-        "rank-two"
-        :
-        rank===3
-        ?
-        "rank-three"
-        :
-        ""
-
+            rank===1
+            ?"rank-one"
+            :rank===2
+            ?"rank-two"
+            :rank===3
+            ?"rank-three"
+            :""
         }">
 
-
-        #${rank}
-
+            #${rank}
 
         </td>
 
+        <td>${employee.name}</td>
 
+        <td>${employee.department}</td>
 
+        <td class="xp">
+
+            ${employee.xp} XP
+
+        </td>
 
         <td>
 
-        ${employee.name}
+            <span class="badge ${badge.className}">
+
+                ${badge.text}
+
+            </span>
 
         </td>
-
-
-
 
         <td>
 
-        ${employee.department}
+            <span class="status ${badge.status.toLowerCase()}">
+
+                ${badge.status}
+
+            </span>
 
         </td>
-
-
-
-
 
         <td>
 
-        ${employee.xp}
-
-        XP
+            ${employee.challenges}
 
         </td>
-
-
-
-
 
         <td>
 
-
-        <span class="badge-count">
-
-        ${employee.badges}
-
-        Badges
-
-        </span>
-
+            ${employee.esg}
 
         </td>
-
-
-
-
 
         <td>
 
-        ${employee.challenges}
+            <button
+                class="redeem-btn"
+                onclick="openRewardModal(${employee.id})">
+
+                Redeem
+
+            </button>
 
         </td>
-
-
-
-
-
-        <td>
-
-        ${employee.esg}
-
-        </td>
-
-
 
         `;
 
-
-
         leaderboardBody.appendChild(row);
-
-
 
     });
 
-
-
 }
 
-
-
-
-
-
-
-
-
-// ================================
-// Update Top Cards
-// ================================
-
+// =========================================
+// Dashboard Cards
+// =========================================
 
 function updateCards(){
 
+    let sorted=[...leaderboard].sort((a,b)=>b.xp-a.xp);
 
+    topEmployee.innerText=sorted[0].name;
 
-let sorted =
-[...leaderboard]
-.sort(
-(a,b)=>b.xp-a.xp
-);
+    let xpTotal=leaderboard.reduce(
+        (total,item)=>total+item.xp,
+        0
+    );
 
+    totalXP.innerText=xpTotal;
 
-
-
-topEmployee.innerText =
-sorted[0].name;
-
-
-
-
-let xpTotal =
-leaderboard.reduce(
-(total,item)=>total+item.xp,
-0
-);
-
-
-
-totalXP.innerText =
-xpTotal;
-
-
-
-totalEmployees.innerText =
-leaderboard.length;
-
-
+    totalEmployees.innerText=leaderboard.length;
 
 }
 
-
-
-
-
-
-
-
-
-// ================================
+// =========================================
 // Search + Filter
-// ================================
-
+// =========================================
 
 searchEmployee.addEventListener(
-"input",
-filterLeaderboard
+    "input",
+    filterLeaderboard
 );
-
-
 
 departmentFilter.addEventListener(
-"change",
-filterLeaderboard
+    "change",
+    filterLeaderboard
 );
-
-
-
-
-
-
 
 function filterLeaderboard(){
 
+    let searchValue=
+    searchEmployee.value.toLowerCase();
 
+    let departmentValue=
+    departmentFilter.value;
 
-let searchValue =
-searchEmployee.value.toLowerCase();
+    let filtered=
+    leaderboard.filter(employee=>{
 
+        let matchSearch=
+        employee.name
+        .toLowerCase()
+        .includes(searchValue);
 
+        let matchDepartment=
 
-let departmentValue =
-departmentFilter.value;
+        departmentValue==="All"
 
+        ||
 
+        employee.department===departmentValue;
 
+        return matchSearch && matchDepartment;
 
+    });
 
-let filtered =
-leaderboard.filter(
-employee=>{
+    renderLeaderboard(filtered);
 
+}
 
-let matchSearch =
+// =========================================
+// Reward Redemption
+// =========================================
 
+function openRewardModal(id){
 
-employee.name
-.toLowerCase()
-.includes(searchValue);
+    const employee=
+    leaderboard.find(emp=>emp.id===id);
 
+    if(!employee) return;
 
+    rewardEmployee.innerText=
+    employee.name;
 
+    rewardXP.innerText=
+    employee.xp+" XP";
 
-let matchDepartment =
+    rewardModal.classList.add("active");
 
+}
 
-departmentValue==="All"
+const closeRewardModal=
+document.getElementById("closeRewardModal");
 
-||
+if(closeRewardModal){
 
-employee.department===departmentValue;
+    closeRewardModal.addEventListener(
+        "click",
+        ()=>{
 
+            rewardModal.classList.remove("active");
 
+        }
+    );
 
+}
 
-return matchSearch && matchDepartment;
+window.addEventListener("click",(e)=>{
 
+    if(e.target===rewardModal){
+
+        rewardModal.classList.remove("active");
+
+    }
 
 });
 
+// =========================================
+// Redeem Reward Buttons
+// =========================================
 
+document.addEventListener("click",(e)=>{
 
+    if(e.target.classList.contains("redeem-btn")){
 
+        const points=
+        Number(
+            e.target.dataset.points
+        );
 
+        if(points){
 
-renderLeaderboard(filtered);
+            alert(
+                "Reward redeemed successfully! ("+
+                points+
+                " XP)"
+            );
 
+        }
 
+    }
+
+});
+
+// =========================================
+// Award XP (Backend Ready)
+// =========================================
+
+function awardXP(employeeId,xp){
+
+    const employee=
+    leaderboard.find(emp=>emp.id===employeeId);
+
+    if(!employee) return;
+
+    employee.xp+=xp;
+
+    sortLeaderboard();
+
+    renderLeaderboard(leaderboard);
+
+    updateCards();
 
 }
 
-
-
-
-
-
-
-
-
-// ================================
+// =========================================
 // Backend Integration Notes
-// ================================
+// =========================================
 
 /*
 
-API:
+GET    /api/leaderboard
 
+POST   /api/csr/approve
 
-GET
+PUT    /api/leaderboard/:id
 
-/api/leaderboard
+POST   /api/rewards/redeem
 
+Future Flow
 
+CSR Approved
+      ↓
+Award XP
+      ↓
+Badge Unlock
+      ↓
+Leaderboard Update
+      ↓
+Reward Redemption
 
-Example Response:
+Frontend only renders data.
 
+Backend calculates:
 
-[
-{
-name:"Amit Sharma",
-department:"IT",
-xp:1200,
-badges:5,
-challenges:10,
-esg:90
-}
-]
-
-
-
-Backend will calculate:
-
-- Ranking
-- XP
-- Badges
-- Challenge Completion
-
-
-Frontend only displays data.
-
+• XP
+• Rank
+• Badge Eligibility
+• Reward Eligibility
 
 */

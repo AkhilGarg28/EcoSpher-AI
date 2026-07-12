@@ -500,3 +500,328 @@
 
 
 }
+
+/* =====================================================
+   BADGE SYSTEM
+===================================================== */
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    padding:8px 14px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    color:#fff;
+
+}
+
+.badge.legend{
+
+    background:#7B1FA2;
+
+}
+
+.badge.hero{
+
+    background:#2E7D32;
+
+}
+
+.badge.warrior{
+
+    background:#1565C0;
+
+}
+
+.badge.champion{
+
+    background:#F57C00;
+
+}
+
+.badge.beginner{
+
+    background:#00897B;
+
+}
+
+.badge.locked{
+
+    background:#9E9E9E;
+
+}
+
+
+/* =====================================================
+   STATUS BADGE
+===================================================== */
+
+.status{
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+.status.unlocked{
+
+    background:#E8F5E9;
+
+    color:#2E7D32;
+
+}
+
+.status.locked{
+
+    background:#FFEBEE;
+
+    color:#C62828;
+
+}
+
+
+/* =====================================================
+   REDEEM BUTTON
+===================================================== */
+
+.redeem-btn{
+
+    background:#2E7D32;
+
+    color:#fff;
+
+    border:none;
+
+    padding:9px 18px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.redeem-btn:hover{
+
+    background:#1B5E20;
+
+}
+
+.redeem-btn:disabled{
+
+    background:#BDBDBD;
+
+    cursor:not-allowed;
+
+}
+
+
+/* =====================================================
+   REWARD MODAL
+===================================================== */
+
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:999;
+
+}
+
+.modal.active{
+
+    display:flex;
+
+}
+
+.modal-content{
+
+    background:#fff;
+
+    width:650px;
+
+    max-width:95%;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    animation:popup .3s ease;
+
+}
+
+@keyframes popup{
+
+    from{
+
+        transform:scale(.8);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+.modal-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.modal-header button{
+
+    border:none;
+
+    background:none;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+}
+
+.reward-info{
+
+    margin-bottom:25px;
+
+}
+
+.reward-list{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+    gap:18px;
+
+}
+
+.reward-card{
+
+    background:#F8F9FA;
+
+    border-radius:12px;
+
+    padding:18px;
+
+    text-align:center;
+
+    transition:.3s;
+
+}
+
+.reward-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+
+}
+
+.reward-card h4{
+
+    margin-bottom:10px;
+
+}
+
+.reward-card p{
+
+    margin-bottom:15px;
+
+    color:#666;
+
+}
+
+
+/* =====================================================
+   TABLE IMPROVEMENTS
+===================================================== */
+
+#leaderboardBody tr{
+
+    transition:.25s;
+
+}
+
+#leaderboardBody tr:hover{
+
+    background:#F5FFF5;
+
+}
+
+.rank{
+
+    font-weight:bold;
+
+    color:#2E7D32;
+
+}
+
+.xp{
+
+    font-weight:600;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:768px){
+
+    .modal-content{
+
+        width:95%;
+
+    }
+
+    .reward-list{
+
+        grid-template-columns:1fr;
+
+    }
+
+}

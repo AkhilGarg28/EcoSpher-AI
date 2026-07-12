@@ -533,7 +533,7 @@ Marketing
 <th>XP Points</th>
 
 
-<th>Badges</th>
+<th>Badge</th>
 
 
 <th>Challenges</th>
@@ -564,6 +564,90 @@ Marketing
 
 
 </table>
+
+<!-- =========================
+Reward Redemption Modal
+========================= -->
+
+<div class="modal" id="rewardModal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>Reward Redemption</h2>
+
+            <button id="closeRewardModal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+        <div class="reward-info">
+
+            <h3 id="rewardEmployee"></h3>
+
+            <p>
+
+                Available XP :
+                <strong id="rewardXP"></strong>
+
+            </p>
+
+        </div>
+
+        <div class="reward-list">
+
+            <div class="reward-card">
+
+                <h4>☕ Coffee Coupon</h4>
+
+                <p>100 XP</p>
+
+                <button class="redeem-btn"
+                    data-points="100">
+
+                    Redeem
+
+                </button>
+
+            </div>
+
+            <div class="reward-card">
+
+                <h4>🎁 Amazon Voucher</h4>
+
+                <p>500 XP</p>
+
+                <button class="redeem-btn"
+                    data-points="500">
+
+                    Redeem
+
+                </button>
+
+            </div>
+
+            <div class="reward-card">
+
+                <h4>🌳 Tree Plantation Certificate</h4>
+
+                <p>800 XP</p>
+
+                <button class="redeem-btn"
+                    data-points="800">
+
+                    Redeem
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 
 
