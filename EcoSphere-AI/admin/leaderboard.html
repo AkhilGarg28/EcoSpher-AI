@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Leaderboard | EcoSphere AI</title>
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+
+<!-- Common CSS -->
+
+<link rel="stylesheet" href="../css/style.css">
+
+
+
+<!-- Leaderboard CSS -->
+
+<link rel="stylesheet" href="../css/leaderboard.css">
+
+
+
+</head>
+
+
+
+<body>
+
+
+
+<div class="container">
+
+
+
+
+
+<!-- ================= SIDEBAR ================= -->
+
+
+<aside class="sidebar">
+
+
+
+<div class="logo">
+
+<i class="fa-solid fa-leaf"></i>
+
+<h2>EcoSphere AI</h2>
+
+</div>
+
+
+
+
+
+
+
+<ul class="menu">
+
+
+<li>
+
+<a href="dashboard.html">
+
+<i class="fa-solid fa-house"></i>
+
+Dashboard
+
+</a>
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="departments.html">
+
+<i class="fa-solid fa-building"></i>
+
+Departments
+
+</a>
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="challenges.html">
+
+<i class="fa-solid fa-bullseye"></i>
+
+Challenges
+
+</a>
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="categories.html">
+
+<i class="fa-solid fa-layer-group"></i>
+
+Categories
+
+</a>
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="csr-approval.html">
+
+<i class="fa-solid fa-circle-check"></i>
+
+CSR Approval
+
+</a>
+
+</li>
+
+
+
+
+
+<li class="active">
+
+<a href="leaderboard.html">
+
+<i class="fa-solid fa-trophy"></i>
+
+Leaderboard
+
+</a>
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="esg-dashboard.html">
+
+<i class="fa-solid fa-seedling"></i>
+
+ESG Dashboard
+
+</a>
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="analytics.html">
+
+<i class="fa-solid fa-chart-line"></i>
+
+Analytics
+
+</a>
+
+</li>
+
+
+
+</ul>
+
+
+
+</aside>
+
+
+
+
+
+
+
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
+
+
+<main class="main-content">
+
+
+
+
+
+<!-- NAVBAR -->
+
+
+<header class="navbar">
+
+
+
+<div class="welcome">
+
+
+<h2>
+Leaderboard
+</h2>
+
+
+<p>
+Track employee sustainability performance.
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="admin-profile">
+
+
+<i class="fa-solid fa-bell"></i>
+
+
+<img src="../assets/images/avatar.png" alt="Admin">
+
+
+</div>
+
+
+
+</header>
+
+
+
+
+
+
+
+
+
+<!-- PAGE HEADER -->
+
+
+<section class="leaderboard-header">
+
+
+
+<div>
+
+
+<h2>
+Employee Ranking
+</h2>
+
+
+<p>
+Top performers based on XP and sustainability activities.
+</p>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- TOP CARDS -->
+
+
+<section class="leader-cards">
+
+
+
+<div class="leader-card">
+
+
+<i class="fa-solid fa-trophy"></i>
+
+
+<div>
+
+
+<h3 id="topEmployee">
+
+--
+
+</h3>
+
+
+<p>
+Top Performer
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="leader-card">
+
+
+<i class="fa-solid fa-star"></i>
+
+
+<div>
+
+
+<h3 id="totalXP">
+
+--
+
+</h3>
+
+
+<p>
+Total XP Earned
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="leader-card">
+
+
+<i class="fa-solid fa-users"></i>
+
+
+<div>
+
+
+<h3 id="totalEmployees">
+
+--
+
+</h3>
+
+
+<p>
+Active Employees
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- TOOLBAR -->
+
+
+<section class="leader-toolbar">
+
+
+
+<div class="search-box">
+
+
+<input
+
+type="text"
+
+id="searchEmployee"
+
+placeholder="Search Employee">
+
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+
+</div>
+
+
+
+
+
+<div class="filter-box">
+
+
+<select id="departmentFilter">
+
+
+<option value="All">
+
+All Departments
+
+</option>
+
+
+<option>
+
+IT
+
+</option>
+
+
+<option>
+
+HR
+
+</option>
+
+
+<option>
+
+Finance
+
+</option>
+
+
+<option>
+
+Marketing
+
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- LEADERBOARD TABLE -->
+
+
+
+<section class="leader-table">
+
+
+
+<table>
+
+
+
+<thead>
+
+
+<tr>
+
+
+<th>Rank</th>
+
+
+<th>Employee</th>
+
+
+<th>Department</th>
+
+
+<th>XP Points</th>
+
+
+<th>Badges</th>
+
+
+<th>Challenges</th>
+
+
+<th>ESG Points</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+
+<tbody id="leaderboardBody">
+
+
+
+<!-- Dynamic Data -->
+
+
+</tbody>
+
+
+
+
+</table>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+</main>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script src="../js/leaderboard.js"></script>
+
+
+</body>
+
+</html>

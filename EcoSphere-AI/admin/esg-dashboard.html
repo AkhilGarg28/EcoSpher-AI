@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>ESG Dashboard | EcoSphere AI</title>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+
+<!-- Common CSS -->
+
+<link rel="stylesheet" href="../css/style.css">
+
+
+
+<!-- ESG CSS -->
+
+<link rel="stylesheet" href="../css/esg-dashboard.css">
+
+
+</head>
+
+
+
+
+<body>
+
+
+<div class="container">
+
+
+
+
+
+<!-- ================= SIDEBAR ================= -->
+
+
+<aside class="sidebar">
+
+
+<div class="logo">
+
+
+<i class="fa-solid fa-leaf"></i>
+
+
+<h2>EcoSphere AI</h2>
+
+
+</div>
+
+
+
+
+
+
+
+<ul class="menu">
+
+
+<li>
+
+<a href="dashboard.html">
+
+<i class="fa-solid fa-house"></i>
+
+Dashboard
+
+</a>
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="departments.html">
+
+<i class="fa-solid fa-building"></i>
+
+Departments
+
+</a>
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="challenges.html">
+
+<i class="fa-solid fa-bullseye"></i>
+
+Challenges
+
+</a>
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="categories.html">
+
+<i class="fa-solid fa-layer-group"></i>
+
+Categories
+
+</a>
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="csr-approval.html">
+
+<i class="fa-solid fa-circle-check"></i>
+
+CSR Approval
+
+</a>
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="leaderboard.html">
+
+<i class="fa-solid fa-trophy"></i>
+
+Leaderboard
+
+</a>
+
+</li>
+
+
+
+
+
+<li class="active">
+
+<a href="esg-dashboard.html">
+
+
+<i class="fa-solid fa-seedling"></i>
+
+
+ESG Dashboard
+
+
+</a>
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="analytics.html">
+
+
+<i class="fa-solid fa-chart-line"></i>
+
+
+Analytics
+
+
+</a>
+
+</li>
+
+
+
+</ul>
+
+
+</aside>
+
+
+
+
+
+
+
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
+
+
+<main class="main-content">
+
+
+
+
+
+
+<!-- NAVBAR -->
+
+
+<header class="navbar">
+
+
+<div class="welcome">
+
+
+<h2>
+ESG Dashboard
+</h2>
+
+
+<p>
+Monitor sustainability performance.
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="admin-profile">
+
+
+<i class="fa-solid fa-bell"></i>
+
+
+<img src="../assets/images/avatar.png" alt="Admin">
+
+
+</div>
+
+
+
+</header>
+
+
+
+
+
+
+
+
+
+<!-- PAGE HEADER -->
+
+
+<section class="esg-header">
+
+
+<div>
+
+
+<h2>
+Environmental Social Governance Score
+</h2>
+
+
+<p>
+Analyze overall and department sustainability impact.
+</p>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ================= ESG SCORE CARDS ================= -->
+
+
+
+<section class="esg-cards">
+
+
+
+
+
+<div class="esg-card overall">
+
+
+<div class="icon">
+
+
+<i class="fa-solid fa-earth-americas"></i>
+
+
+</div>
+
+
+<div>
+
+
+<h3 id="overallScore">
+
+-- %
+
+</h3>
+
+
+<p>
+Overall ESG Score
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="esg-card">
+
+
+<div class="icon environmental">
+
+
+<i class="fa-solid fa-tree"></i>
+
+
+</div>
+
+
+<div>
+
+
+<h3 id="environmentScore">
+
+-- %
+
+</h3>
+
+
+<p>
+Environmental
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="esg-card">
+
+
+<div class="icon social">
+
+
+<i class="fa-solid fa-people-group"></i>
+
+
+</div>
+
+
+<div>
+
+
+<h3 id="socialScore">
+
+-- %
+
+</h3>
+
+
+<p>
+Social
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="esg-card">
+
+
+<div class="icon governance">
+
+
+<i class="fa-solid fa-building-shield"></i>
+
+
+</div>
+
+
+<div>
+
+
+<h3 id="governanceScore">
+
+-- %
+
+</h3>
+
+
+<p>
+Governance
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ================= SCORE BREAKDOWN ================= -->
+
+
+<section class="score-section">
+
+
+
+<div class="section-title">
+
+
+<h2>
+ESG Score Breakdown
+</h2>
+
+
+</div>
+
+
+
+
+
+
+<div class="progress-container">
+
+
+
+
+
+<div class="progress-item">
+
+
+<div class="progress-label">
+
+
+<span>
+Environmental
+</span>
+
+
+<span id="environmentValue">
+0%
+</span>
+
+
+</div>
+
+
+
+<div class="progress-bar">
+
+
+<div 
+class="progress-fill environmental-fill"
+id="environmentProgress">
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="progress-item">
+
+
+<div class="progress-label">
+
+
+<span>
+Social
+</span>
+
+
+<span id="socialValue">
+0%
+</span>
+
+
+</div>
+
+
+
+<div class="progress-bar">
+
+
+<div 
+class="progress-fill social-fill"
+id="socialProgress">
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="progress-item">
+
+
+<div class="progress-label">
+
+
+<span>
+Governance
+</span>
+
+
+<span id="governanceValue">
+0%
+</span>
+
+
+</div>
+
+
+
+<div class="progress-bar">
+
+
+<div 
+class="progress-fill governance-fill"
+id="governanceProgress">
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ================= DEPARTMENT ESG TABLE ================= -->
+
+
+
+<section class="department-esg">
+
+
+
+<h2>
+Department ESG Performance
+</h2>
+
+
+
+
+
+<table>
+
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+Department
+</th>
+
+
+<th>
+Environmental
+</th>
+
+
+<th>
+Social
+</th>
+
+
+<th>
+Governance
+</th>
+
+
+<th>
+Overall Score
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+
+<tbody id="departmentESGBody">
+
+
+<!-- Dynamic Data -->
+
+
+</tbody>
+
+
+
+
+</table>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+</main>
+
+
+</div>
+
+
+
+
+
+
+
+<script src="../js/esg-dashboard.js"></script>
+
+
+</body>
+
+
+</html>
