@@ -17,6 +17,7 @@ import challengeRoutes from "./routes/challengeRoutes.js";
 import challengeParticipationRoutes from "./routes/challengeParticipationRoutes.js";
 import rewardRedemptionRoutes from "./routes/rewardRedemptionRoutes.js";
 import leaderboardRoutes from "./routes/leaderboardRoutes.js";
+import esgRoutes from "./routes/esgRoutes.js";
 
 dotenv.config();
 
@@ -53,6 +54,7 @@ app.use("/api/participation", participationRoutes);
 app.use("/api/challenges", challengeRoutes);
 app.use("/api/challenge-participation", challengeParticipationRoutes);
 app.use("/api/leaderboard", leaderboardRoutes);
+app.use("/api/esg", esgRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ success: false, message: "Route not found" });
