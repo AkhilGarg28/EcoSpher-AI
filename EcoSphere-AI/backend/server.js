@@ -13,6 +13,8 @@ import badgeRoutes from "./routes/badgeRoutes.js";
 import rewardRoutes from "./routes/rewardRoutes.js";
 import csrRoutes from "./routes/csrRoutes.js";
 import participationRoutes from "./routes/participationRoutes.js";
+import challengeRoutes from "./routes/challengeRoutes.js";
+import challengeParticipationRoutes from "./routes/challengeParticipationRoutes.js";
 
 dotenv.config();
 
@@ -45,6 +47,8 @@ app.use("/api/badges", badgeRoutes);
 app.use("/api/rewards", rewardRoutes);
 app.use("/api/csr", csrRoutes);
 app.use("/api/participation", participationRoutes);
+app.use("/api/challenges", challengeRoutes);
+app.use("/api/challenge-participation", challengeParticipationRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ success: false, message: "Route not found" });
